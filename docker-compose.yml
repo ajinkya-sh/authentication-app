@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    image: ajinkyashingane/authentication:0.0.1
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/authentication_app?autoReconnect=true&user=root&password=abcd1234&useSSL=false
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    hostname: mysqlhost
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "abcd1234"
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: "authentication_app"
+      MYSQL_USER: "another"
+      MYSQL_PASSWORD: "abcd1234"
+
