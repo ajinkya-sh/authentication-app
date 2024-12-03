@@ -91,6 +91,7 @@ curl --location 'localhost:8080/auth/generateToken' \
 
 **Request with Valid Token: This the api which is secured and one has to put tokens from signin or signup or generateToken api**
 
+The token's expiration limit is of 1 hour.
 
 curl --location 'localhost:8080/api/secure' \
 --header 'Content-Type: application/json' \
