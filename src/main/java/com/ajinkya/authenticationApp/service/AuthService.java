@@ -19,8 +19,6 @@ import static com.ajinkya.authenticationApp.util.Constants.*;
 @Service
 public class AuthService {
 
-
-
     private final UserRepository userRepository;
     private final AuthValidator authValidator;
 
@@ -34,13 +32,13 @@ public class AuthService {
 
     public TokenDTO signUp(SignupDTO signupDTO) {
         List<String> errors = authValidator.validate(signupDTO);
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             return TokenDTO.builder().token("").message(errors.toString()).httpCode(BAD_REQUEST).build();
         }
         String email = signupDTO.getEmail();
         String password = signupDTO.getPassword();
         String name = signupDTO.getName();
-        if(!checkEmailFormat(email)) {
+        if (!checkEmailFormat(email)) {
             return TokenDTO.builder().token("").message(INCORRECT_MAIL_FORMAT).httpCode(BAD_REQUEST).build();
         }
         if (userRepository.findByEmail(email) != null) {
@@ -58,6 +56,7 @@ public class AuthService {
 
         return TokenDTO.builder().token(token).httpCode(CREATED).message("Token created successfully").build();
     }
+
     private boolean checkEmailFormat(String email) {
 
         Pattern pattern = Pattern.compile(emailRegex);
@@ -66,13 +65,13 @@ public class AuthService {
 
     public TokenDTO signIn(SignInDTO signInDTO) {
         List<String> errors = authValidator.validate(signInDTO);
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             return TokenDTO.builder().token("").message(errors.toString()).httpCode(CONFLICT).build();
         }
         String email = signInDTO.getEmail();
         String password = signInDTO.getPassword();
         User user = userRepository.findByEmail(email);
-        if(user == null || !passwordEncoder.matches(password, user.getPassword())) {
+        if (user == null || !passwordEncoder.matches(password, user.getPassword())) {
             return TokenDTO.builder().token(" ").httpCode(INVALID).message(INVALID_CREDS).build();
         }
 
@@ -81,7 +80,7 @@ public class AuthService {
         return TokenDTO.builder().token(token).httpCode(OK).message(TOKEN_SUCCESS).build();
     }
 
-    public TokenDTO generateToken (TokenDTO tokenDTO) {
+    public TokenDTO generateToken(TokenDTO tokenDTO) {
         String email = "";
         try {
             email = JwtUtil.getEmail(tokenDTO.getToken());

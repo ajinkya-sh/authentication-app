@@ -18,22 +18,13 @@ public class JwtUtil {
     public static String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
         byte[] secretKeyBytes = SECRET_KEY.getBytes();
-        return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(username)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(SignatureAlgorithm.HS256, Base64.getEncoder().encode(secretKeyBytes))
-                .compact();
+        return Jwts.builder().setClaims(claims).setSubject(username).setIssuedAt(new Date(System.currentTimeMillis())).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)).signWith(SignatureAlgorithm.HS256, Base64.getEncoder().encode(secretKeyBytes)).compact();
     }
 
 
     public static Claims extractClaims(String token) {
         byte[] secretKeyBytes = SECRET_KEY.getBytes();
-        return Jwts.parser()
-                .setSigningKey(Base64.getEncoder().encode(secretKeyBytes))
-                .parseClaimsJws(token)
-                .getBody();
+        return Jwts.parser().setSigningKey(Base64.getEncoder().encode(secretKeyBytes)).parseClaimsJws(token).getBody();
     }
 
     public static void validateToken(String token, String username) {
