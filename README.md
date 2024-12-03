@@ -14,6 +14,11 @@
 The application will be available at `http://localhost:8080`.
 Please note : If the spring application comes down please re run docker compse up command again
 
+Signup and SignIn APIs are added.
+Authorization of token happens.
+Revocation of token will happen after 1 hour.
+Generate Token API will renew the token before it expires.
+
 ----------
 
 ## API Endpoints
