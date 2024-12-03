@@ -5,7 +5,7 @@
 
 ## Step 2: Navigate to the Project Root
 
-`cd project-name` 
+`cd authentication-app` 
 
 ## Step 3: Start the Application Using Docker Compose
 
