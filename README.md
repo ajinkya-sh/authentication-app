@@ -21,13 +21,13 @@ The application will be available at `http://localhost:8080`.
 
 **Request:**
 
-`curl --location 'localhost:8080/auth/signup' \
+curl --location 'localhost:8080/auth/signup' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "email" : "johndoe@gmail.com",
+    "email" : "kushal@gmail.com",
     "password" : "qwerty@123",
-    "name" : "johndoe"
-}'`
+    "name" : "kushal"
+}'
 
 **Response:**
 
@@ -45,12 +45,12 @@ The application will be available at `http://localhost:8080`.
 **Request:**
 
 
-` curl --location 'localhost:8080/auth/signin' \
+curl --location 'localhost:8080/auth/signin' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "email" : "johndoe@gmail.com",
     "password" : "john@123"
-}' ` 
+}' 
 
 **Response:**
 
@@ -67,11 +67,11 @@ The application will be available at `http://localhost:8080`.
 
 **Request:**
 
-`curl --location 'localhost:8080/auth/generateToken' \
+curl --location 'localhost:8080/auth/generateToken' \
 --header 'Content-Type: application/json' \
 --data '{
     "token" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGdtYWlsLmNvbSIsImV4cCI6MTczMzIzMzU5OSwiaWF0IjoxNzMzMjI5OTk5fQ.vA3QN4gBkBxd6Ip4GND18mKVX8MZaWJNnnbD65QrO2A"
-}'` 
+}'
 
 **Response:**
 
@@ -91,9 +91,9 @@ The application will be available at `http://localhost:8080`.
 **Request with Valid Token: This the api which is secured and one has to put tokens from signin or signup or generateToken api**
 
 
-`curl --location 'localhost:8080/api/secure' \
+curl --location 'localhost:8080/api/secure' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGdtYWlsLmNvbSIsImV4cCI6MTczMzIzMzU5OSwiaWF0IjoxNzMzMjI5OTk5fQ.vA3QN4gBkBxd6Ip4GND18mKVX8MZaWJNnnbD65QrO2A'` 
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGdtYWlsLmNvbSIsImV4cCI6MTczMzIzMzU5OSwiaWF0IjoxNzMzMjI5OTk5fQ.vA3QN4gBkBxd6Ip4GND18mKVX8MZaWJNnnbD65QrO2A'
 
 **Response:**
 
@@ -101,8 +101,8 @@ The application will be available at `http://localhost:8080`.
 
 **Request Without Token:**
 
-`curl --location 'localhost:8080/api/secure' \
---header 'Content-Type: application/json'` 
+curl --location 'localhost:8080/api/secure' \
+--header 'Content-Type: application/json'
 
 **Response:**
 
