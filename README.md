@@ -27,7 +27,7 @@ The application will be available at `http://localhost:8080`.
     "email" : "johndoe@gmail.com",
     "password" : "qwerty@123",
     "name" : "johndoe"
-}''`
+}'`
 
 **Response:**
 
