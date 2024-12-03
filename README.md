@@ -10,9 +10,10 @@
 ## Step 3: Start the Application Using Docker Compose
 
 `docker-compose up -d` 
+`Please note : If the spring application comes down please re run docker compse up command again`
 
 The application will be available at `http://localhost:8080`.
-Please note : If the spring application comes down please re run docker compse up command again
+
 ----------
 
 ## API Endpoints
