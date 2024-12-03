@@ -6,21 +6,17 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/authentication_app?autoReconnect=true&user=root&password=abcd1234&useSSL=false
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/authentication_app?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin
     depends_on:
-      - mysql
+      - mysql-db
 
-  mysql:
+  mysql-db:
     image: mysql:8.0
-    hostname: mysqlhost
     ports:
-      - "3307:3306"
+      - "3333:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "abcd1234"
-      MYSQL_HOST: localhost
+      MYSQL_ROOT_PASSWORD: "admin"
       MYSQL_DATABASE: "authentication_app"
-      MYSQL_USER: "another"
-      MYSQL_PASSWORD: "abcd1234"
 
