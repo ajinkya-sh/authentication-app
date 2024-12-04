@@ -11,6 +11,12 @@ services:
       SPRING_DATASOURCE_PASSWORD: admin
     depends_on:
       - mysql-db
+    restart: on-failure
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   mysql-db:
     image: mysql:8.0
